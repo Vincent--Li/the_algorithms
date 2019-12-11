@@ -65,21 +65,36 @@ def merge(left, right):
 
 
 def quickSort(arr, n):
-    l, j, i  =  0, 0, 0
+    __quickSort(arr, 0, n -1)
 
-    for k in range(1, n):
-        if arr[l] ==  arr[k]:
-            l += 1
-            arr[i] = arr[j]
-            arr[j] = arr[l]
-            arr[l] = arr[k]
-        elif arr[k] > arr[l]:
-            i += 1
-        else:
-            arr[i] , arr[j] = arr[j], arr[i]
-            j +=1
-            i+=1
-    quickSort(arr[l+1:j])
+def __quickSort(arr, l, r):
+
+    # 优化点: 如果数据集较小的话, 使用归并排序可以提高效率
+    if l >= r:
+        return;
+    # if r - l <=15:
+    #     mergeSort(arr, l, r)
+
+    p = __partition(arr, l, r)
+    __quickSort(arr, l, p - 1)
+    __quickSort(arr, p + 1, r)
+
+def __partition(arr, l, r):
+
+    # 优化点, 加一步随机取标定点
+    # 随机取index  = rand()%(r - l + 1) + l
+    # arr[l] , arr[随机点] = arr[随机点], arr[l]
+    
+    v = arr[l]
+
+    # arr[l+1...j] < v; arr[j+1...i] > v
+    j = l
+    for i in range(l+1, r+1):
+        if arr[i] < v:
+            arr[j+1], arr[i] = arr[i], arr[j+1]
+            j += 1
+    arr[l], arr[j] = arr[j], arr[l]
+    return j
 
 def testSort(sort_method, arr):
     start_time =time.time() * 1000
@@ -92,3 +107,4 @@ def testSort(sort_method, arr):
 # testSort(selectionSort, random_int_list(1, 10000000, 100000))
 # testSort(insertionSort, random_int_list(1, 10000000, 100000))
 testSort(mergeSort, random_int_list(1, 10000000, 100000))
+testSort(quickSort, random_int_list(1, 10000000, 100000))
