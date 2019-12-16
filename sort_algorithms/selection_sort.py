@@ -1,15 +1,6 @@
 import time
 import random
 
-def random_int_list(start, stop, length):
-  start, stop = (int(start), int(stop)) if start <= stop else (int(stop), int(start))
-  length = int(abs(length)) if length else 0
-  random_list = []
-  for i in range(length):
-    random_list.append(random.randint(start, stop))
-  return random_list
-
-
 def selectionSort(arr, n):
     for i in range(0, n):
         # [i, n] 闭区间中最小的元素做交换
@@ -95,16 +86,3 @@ def __partition(arr, l, r):
             j += 1
     arr[l], arr[j] = arr[j], arr[l]
     return j
-
-def testSort(sort_method, arr):
-    start_time =time.time() * 1000
-    result = sort_method(arr, len(arr))
-    end_time = time.time() * 1000
-    c = end_time - start_time
-    # print(result)
-    print(str(c) + ' ms' )
-
-# testSort(selectionSort, random_int_list(1, 10000000, 100000))
-# testSort(insertionSort, random_int_list(1, 10000000, 100000))
-testSort(mergeSort, random_int_list(1, 10000000, 100000))
-testSort(quickSort, random_int_list(1, 10000000, 100000))

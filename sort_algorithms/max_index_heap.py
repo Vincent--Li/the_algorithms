@@ -1,14 +1,23 @@
 import random
 import math
 
-class MaxHeap:
+class MaxIndexHeap:
     '''
     假设data的索引从1开始, parent_index = i/2, 左子节点 left_index = i * 2, right_index = i * 2 + 1
     '''
-    def __init__(self):
+    def __init__(self,  arr=[]):
         self.data = []
         self.data.append(0)
         self.count = 0
+
+        if arr != None and len(arr) != 0:
+            for i in range(len(arr)):
+                self.data.append(arr[i])
+            self.count = len(arr)
+            for i in range(self.count//2, 0, -1):
+                self.__shift_down__(i)
+
+
 
     def size(self):
         return self.count;
@@ -50,23 +59,7 @@ class MaxHeap:
             self.data[k], self.data[j] = self.data[j] , self.data[k]
             k = j
 
-
-
-def random_int_list(start, stop, length):
-  start, stop = (int(start), int(stop)) if start <= stop else (int(stop), int(start))
-  length = int(abs(length)) if length else 0
-  random_list = []
-  for i in range(length):
-    random_list.append(random.randint(start, stop))
-  return random_list
-
-
 def print_heap(heap):
-    '''
-    工具方法
-    :param arr:
-    :return:
-    '''
     for i in range(1, math.ceil(math.log(heap.count, 2)) + 1):
         temp_arr = []
         for j in heap.data[int(math.pow(2, i - 1)):int(math.pow(2, i))]:
@@ -76,12 +69,61 @@ def print_heap(heap):
             print(item, end='  ')
         print('\n')
 
+# 基于堆的排序算法
+def heap_sort_1(arr, n):
+    max_heap = MaxIndexHeap()
+    for i in range(n):
+        max_heap.insert(arr[i])
+
+    tmp_arr = []
+    for i in range(n, 0,-1):
+        tmp_arr.append( max_heap.extract_max())
+
+def heap_sort_2(arr, n):
+    max_heap = MaxIndexHeap(arr)
+    tmp_arr = []
+    for i in range(n, 0, -1):
+        tmp_arr.append(max_heap.extract_max())
+
+
+def _shift_down(data, n, k):
+    # 两个孩子节点, 谁大和谁换.
+    # 完全二叉树中, 只要有左孩子, 就可以; 不可能只有右孩子没有左孩子
+    while 2 * k  + 1 < n:
+        j = 2 * k  + 1 # j 先默认设置为左孩子, 其含义是待交换的节点index
+        # print(n,j,k)
+        if j + 1 < n and data[j + 1] > data[j]:
+            j += 1  # 如果有右孩子,  且两个孩子中右孩子较大
+
+        if data[k] > data[j]:  # 当前需要交换的节点, 比两个孩子都大, 就停止
+            break
+        data[k], data[j] = data[j], data[k]
+        k = j
+
+
+def heap_sort(arr, n):
+    # heapify这一步, 不需要调用, 直接在arr上使用shift_down完成, 此处暂时这样写, 需要替换掉
+    for i in range((n-1)//2, -1, -1):
+        # print(i)
+        _shift_down(arr, n, i)
+
+    # 原地堆排序
+    for i in range(n-1, 0, -1):
+        arr[0], arr[i] = arr[i], arr[0]
+        _shift_down(arr, i, 0)
+
 
 # 测试
-temp_heap  = MaxHeap()
-for item in random_int_list(5, 90, 20):
-    temp_heap.insert(item)
+## 测试插入
+# temp_heap  = MaxHeap()
+# for item in random_int_list(5, 90, 20):
+#     temp_heap.insert(item)
 
-while not temp_heap.isEmpty():
-    print_heap(temp_heap)
-    print('count is: ', temp_heap.count , ' max is: ',temp_heap.extract_max())
+## 测试取最大值
+# while not temp_heap.isEmpty():
+#     print_heap(temp_heap)
+#     print('count is: ', temp_heap.count , ' max is: ',temp_heap.extract_max())
+
+## 测试排序算法
+# heap_sort_1(random_int_list(5, 1000, 20), 20)
+
