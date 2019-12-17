@@ -1,6 +1,8 @@
 import random
 import math
 
+# TODO: 4-8, 4-9的视频
+# 比较的是data, 交换的是index
 class MaxIndexHeap:
     '''
     假设data的索引从1开始, parent_index = i/2, 左子节点 left_index = i * 2, right_index = i * 2 + 1
