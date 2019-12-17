@@ -206,6 +206,9 @@ class BST:
             self.count -= 1
             return successor
 
+# TODO: predecessor/successor floor/ceil rank select 支持重复元素的二分搜索树
+# TODO: 平衡二叉树的实现之 红黑树 / 2-3 tree / AVL tree / Splay tree / Treap(平衡二叉树+堆)
+# TODO: trie
 
 tree = BST()
 tree.insert(2, 2)
