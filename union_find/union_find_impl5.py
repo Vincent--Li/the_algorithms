@@ -21,11 +21,17 @@ class UnionFind4:
         :return:
         """
         assert(0 <= p < self.count)
-        while p!= self.parent[p]:
-            #路径压缩最关键的一句
-            self.parent[p] = self.parent[self.parent[p]]
-            p = self.parent[p]
-        return p
+        # 一种路径压缩
+        # while p!= self.parent[p]:
+            # 路径压缩最关键的一句
+            # self.parent[p] = self.parent[self.parent[p]]
+            # p = self.parent[p]
+
+        # 另一种路径压缩, 使用递归过程
+        if p != self.parent[p]:
+            self.parent[p] = self.find(self.parent[p])
+
+        return self.parent[p]
 
     def is_connected(self, p, q):
         return self.find(p) == self.find(q)
