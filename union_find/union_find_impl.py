@@ -1,5 +1,5 @@
 
-
+# quick find 实现, union操作比较慢
 class UnionFind:
 
     def __init__(self, n):
@@ -16,6 +16,9 @@ class UnionFind:
         assert(0 <= p < self.count)
         return self.id[p]
 
+    def is_connected(self, p, q):
+        return self.find(p) == self.find(q)
+
     def union_elements(self, p, q):
         pId = self.find(p)
         qId = self.find(q)
@@ -26,3 +29,5 @@ class UnionFind:
         for i in range(self.count):
             if self.id[i] == pId:
                 self.id[i] = qId
+
+
