@@ -37,9 +37,8 @@ class Path:
 
 
     def path(self, w, path_list):
-
         p = w
-        while p!= -1 :
+        while p != -1 :
             path_list.append(p)
             p = self.from_list[p]
 
