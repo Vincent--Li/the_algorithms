@@ -1,6 +1,7 @@
 
 # 广度优先遍历, 需要使用辅助队列(先进先出, 后进后出)
 # 可以求出无权图的最短路径
+# TODO: 如果有多条最短路径, 如何处理
 class ShortestPath:
 
     def __init__(self, graph, s):
