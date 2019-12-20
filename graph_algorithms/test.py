@@ -1,11 +1,11 @@
 import random
 
 from graph_algorithms.component import Component
-from graph_algorithms.dense_graph import DenseGraph
+from graph_algorithms.dense_graph_weighted import DenseGraph
 from graph_algorithms.path import Path
 from graph_algorithms.read_graph import ReadGraph
 from graph_algorithms.shortest_path import ShortestPath
-from graph_algorithms.sparse_graph import SparseGraph
+from graph_algorithms.sparse_graph_weight import SparseGraph
 
 # N = 20
 # M = 100
@@ -53,12 +53,20 @@ filename2 = 'testG2.txt'
 # c1 = Component(g1)
 # g1.show()
 
-g2 = ReadGraph(DenseGraph, filename2).g
-c2 = Component(g2)
-# g2.show()
+# 最短路径
+# g2 = ReadGraph(DenseGraph, filename2).g
+# c2 = Component(g2)
+# # g2.show()
+#
+# p2 = Path(g2,0)
+# p2.show_path(6)
+#
+# p3 = ShortestPath(g2, 0)
+# p3.show_path(6)
 
-p2 = Path(g2,0)
-p2.show_path(6)
+# 带权图
+dgw1 = ReadGraph(DenseGraph, filename1).g
+dgw1.show()
 
-p3 = ShortestPath(g2, 0)
-p3.show_path(6)
+sgw = ReadGraph(SparseGraph, filename1).g
+sgw.show()

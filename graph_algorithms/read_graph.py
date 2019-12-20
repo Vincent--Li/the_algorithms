@@ -12,10 +12,10 @@ class ReadGraph :
             self.g = graph(V, False)
 
             for i in range(int(E)):
-                a, b = text_lines[i+1].split(" ")
-                a, b = int(a), int(b)
+                a, b, weight = text_lines[i+1].split(" ")
+                a, b, weight = int(a), int(b), float(weight)
                 assert( 0 <= a < V)
                 assert( 0 <= b < V)
-                self.g.add_edge(a, b)
+                self.g.add_edge(a, b, weight)
         finally:
             file.close()
