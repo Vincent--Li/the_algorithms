@@ -2,6 +2,7 @@ import random
 
 from graph_algorithms.component import Component
 from graph_algorithms.dense_graph_weighted import DenseGraph
+from graph_algorithms.lazy_prim_mst import LazyPrimMST
 from graph_algorithms.path import Path
 from graph_algorithms.read_graph import ReadGraph
 from graph_algorithms.shortest_path import ShortestPath
@@ -70,3 +71,7 @@ dgw1.show()
 
 sgw = ReadGraph(SparseGraph, filename1).g
 sgw.show()
+
+lazyPrimMST = LazyPrimMST(sgw)
+for edge in lazyPrimMST.mstEdges():
+    print(edge.v(), '-',edge.w(), edge.weight)

@@ -20,3 +20,13 @@ class Edge:
     def other(self, x):
         return self.a if x != self.a else self.b
 
+    def __lt__(self, other):
+        return self.weight < other.weight
+
+    def __gt__(self, other):
+        return self.weight > other.weight
+
+    def __eq__(self, other):
+        return self.weight == other.weight
+
+
