@@ -1,6 +1,7 @@
 package com.algorithm.vincent;
 
 import java.util.concurrent.*;
+import java.util.concurrent.Future;
 
 /**
  * @author by zhiyuan.li@hand-china.com

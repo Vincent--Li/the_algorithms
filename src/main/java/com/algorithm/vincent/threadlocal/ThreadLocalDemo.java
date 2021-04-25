@@ -13,6 +13,7 @@ public class ThreadLocalDemo {
 
         @Override
         public void run() {
+            System.out.println(threadLocal.get());
             threadLocal.set("A");
             try {
                 Thread.sleep(1000);
@@ -33,6 +34,7 @@ public class ThreadLocalDemo {
 
         @Override
         public void run() {
+            System.out.println(threadLocal.get());
             threadLocal.set("B");
             try {
                 Thread.sleep(1000);
@@ -53,6 +55,7 @@ public class ThreadLocalDemo {
 
         @Override
         public void run() {
+            System.out.println(threadLocal.get());
             threadLocal.set("C");
             try {
                 Thread.sleep(1000);
@@ -64,7 +67,7 @@ public class ThreadLocalDemo {
     }
 
     public static void main(String[] args) {
-        ThreadLocal<String> threadLocal = new ThreadLocal<>();
+        ThreadLocal<String> threadLocal = ThreadLocal.withInitial(()->"TEST");
         new Thread(new ThreadA(threadLocal)).start();
         new Thread(new ThreadB(threadLocal)).start();
         new Thread(new ThreadC(threadLocal)).start();

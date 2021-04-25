@@ -1,4 +1,4 @@
-package threadcommunication;
+package com.algorithm.vincent.threadcommunication;
 
 import java.io.IOException;
 import java.io.PipedReader;

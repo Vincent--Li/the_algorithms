@@ -1,4 +1,4 @@
-package threadcommunication;
+package com.algorithm.vincent.threadcommunication;
 
 /**
  * @author by zhiyuan.li@hand-china.com
