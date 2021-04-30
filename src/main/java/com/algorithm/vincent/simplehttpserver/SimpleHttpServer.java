@@ -6,7 +6,6 @@ import java.net.Socket;
 
 import com.algorithm.vincent.threadpool.DefaultThreadPool;
 import com.algorithm.vincent.threadpool.ThreadPool;
-import com.sun.xml.internal.ws.api.message.Header;
 
 /**
  * @author by zhiyuan.li@hand-china.com
