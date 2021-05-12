@@ -12,6 +12,7 @@ public class NavigatorProxyTest {
                 new Class[]{ Navigator.class},
                 new NavigationHandler(new OriginalNavigator())
         );
+        System.out.println(enhancedNavigator.getClass().getName());
         String result = enhancedNavigator.navigate("Shanghai", "Chengdu");
         System.out.println("navigation succeed: " + result);
     }

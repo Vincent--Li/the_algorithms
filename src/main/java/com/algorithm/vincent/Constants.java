@@ -10,6 +10,9 @@ public class Constants {
     public Constants() {
     }
 
+    public void sout(){
+        System.out.println("class");
+    }
 
     public static class Profile {
         public static final String MULTI_EXPIRE = "HSPM.MULTI_REDIS_EXPIRE";
