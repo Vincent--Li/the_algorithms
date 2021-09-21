@@ -7,7 +7,6 @@ public class GroupMerge {
 
     public static void main(String[] args) {
         System.out.println(getProvince(new int[][]{{1,1,0}, {1,1,0}, {0,0,1}}));
-        // TEST
         System.out.println(getProvince(new int[][]{{1,0,0}, {0,1,0}, {0,0,1}}));
     }
 
