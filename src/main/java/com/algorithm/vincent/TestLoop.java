@@ -2,61 +2,39 @@ package com.algorithm.vincent;
 
 import java.math.BigDecimal;
 import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import jdk.nashorn.internal.objects.annotations.Getter;
 
 /**
  * @author by zhiyuan.li@hand-china.com
  */
 public class TestLoop {
-    public static void main(String[] args) {
-//        List<DemoObject> objects = new ArrayList<>();
-//        objects.add(new DemoObject("ABC"));
-//        objects.add(new DemoObject("DEF"));
-//        objects.add(new DemoObject("GHI"));
-//
-//        objects.parallelStream().forEach(x -> {
-//            switch ("ACCOUNTED_ERROR"){
-//                case Constants.FeedAccountStatus.ACCOUNTED_SUCCESS:
-//                    if("1" == Constants.AccountingStatus.FORWARD_ACCOUNT){
-//                        x.setAccountingStatus(Constants.AccountingStatus.ACCOUNTED);
-//                    }else if("-1" == Constants.AccountingStatus.REV_ACCOUNT){
-//                        x.setAccountingStatus(Constants.AccountingStatus.REV_ACCOUNTED);
-//                    }
-//                    break;
-//                case Constants.FeedAccountStatus.ACCOUNTED_ERROR:
-//                    if("1" == Constants.AccountingStatus.FORWARD_ACCOUNT){
-//                        x.setAccountingStatus(Constants.AccountingStatus.ACCOUNTED_ERROR);
-//                    }else if("-1" == Constants.AccountingStatus.REV_ACCOUNT){
-//                        x.setAccountingStatus(Constants.AccountingStatus.REV_ACCOUNTED_ERROR);
-//                    }
-//
-//                    break;
-//                default:
-//                    break;
-//            }
-//        });
-//
-//        objects.forEach(x -> System.out.println(x.getAccountingStatus()));
-//        String str1 = "Student";
-//        String str2 = new String("Student");
-//        System.out.println(str1 == str2);
-//        BigDecimal bigDecimal = BigDecimal.ZERO;
-//        System.out.println(bigDecimal.add(new BigDecimal(5)));
-//        System.out.println(bigDecimal.plus());
-//        System.out.println(bigDecimal);
+    public static void main(String[] args) throws ParseException {
+        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 
-        int i = 0;
-        for(; i < 5; i++){
+        Date date = df.parse("2021-01-31");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH, 1);
 
-        }
-        System.out.println(i);
+        System.out.println(df.format(calendar.getTime()));
+
     }
 
-    static class FeedBackDTO {
+    static class Course {
+        private String cname;
 
+        public Course setCname(String cname) {
+             this.cname = cname;
+             return this;
+        }
+
+        public String getCname(){
+            return this.cname;
+        }
     }
 
 }
